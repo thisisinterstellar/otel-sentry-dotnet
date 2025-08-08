@@ -26,13 +26,13 @@ public class WeatherForecastController : ControllerBase
         _logger.LogWarning("This is a warning message for weather forecast retrieval");
         _logger.LogError("An error occurred while retrieving weather forecast data");
         _logger.LogCritical("Critical issue in weather forecast retrieval");
-        
+
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
+        {
+            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+            TemperatureC = Random.Shared.Next(-20, 55),
+            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+        })
             .ToArray();
     }
 }

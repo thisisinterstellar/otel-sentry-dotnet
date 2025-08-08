@@ -17,22 +17,22 @@ public class Worker : BackgroundService
             {
                 _logger.LogDebug("Debugging information at: {time}", DateTimeOffset.Now);
             }
-            
+
             if (_logger.IsEnabled(LogLevel.Information))
             {
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
             }
-            
+
             if (_logger.IsEnabled(LogLevel.Warning))
             {
                 _logger.LogWarning("This is a warning at: {time}", DateTimeOffset.Now);
             }
-            
+
             if (_logger.IsEnabled(LogLevel.Error))
             {
                 _logger.LogError("An error occurred at: {time}", DateTimeOffset.Now);
             }
-            
+
             if (_logger.IsEnabled(LogLevel.Critical))
             {
                 _logger.LogCritical("A critical error occurred at: {time}", DateTimeOffset.Now);
