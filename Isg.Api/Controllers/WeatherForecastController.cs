@@ -6,10 +6,10 @@ namespace Isg.Api.Controllers;
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
+    private static readonly string[] Summaries =
+    [
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+    ];
 
     private readonly ILogger<WeatherForecastController> _logger;
 
@@ -26,6 +26,15 @@ public class WeatherForecastController : ControllerBase
         _logger.LogWarning("This is a warning message for weather forecast retrieval");
         _logger.LogError("An error occurred while retrieving weather forecast data");
         _logger.LogCritical("Critical issue in weather forecast retrieval");
+        
+        try
+        {
+            throw null;
+        }
+        catch (Exception ex)
+        {
+            SentrySdk.CaptureException(ex);
+        }
 
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
