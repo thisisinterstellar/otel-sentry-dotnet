@@ -1,23 +1,23 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+SentrySdk.Init(options =>
+{
+    options.Dsn = "https://examplePublicKey@o0.ingest.sentry.io/0";
+#pragma warning disable SENTRY0001
+    options.Experimental.EnableLogs = true;
+#pragma warning restore SENTRY0001
+});
+
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
-{
     app.MapOpenApi();
-}
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
